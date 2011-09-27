@@ -19,14 +19,14 @@ var app = express.createServer(
 	// express.logger();
 );
 
+
 app.configure(function(){
+	app.use(express.bodyParser());
 	app.use(app.router);
 	app.use(express.errorHandler({
 		dumpExceptions: true, showStack: true
 	}));
 });
-
-app.use(express.bodyParser());
 
 a4_db.connect( function(error) {
 	if (error) throw error;
