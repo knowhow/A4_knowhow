@@ -110,7 +110,8 @@ app.get('/customers', function(req, res, next) {
 });
 
 // put data with request
-app.post('/customers/update/:data', function(req, res) {
+app.post('/customers/update', function(req, res) {
+	res.send(req.body);
 	console.log(req.body);
 });
 
