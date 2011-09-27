@@ -9,7 +9,6 @@
  * By using this software, you agree to be bound by its terms.
  */
 
-
 var express = require('express');
 var nmDbEngine = 'sqlite3';
 var a4_db = require('./a4_node_db_' + nmDbEngine);
@@ -111,20 +110,8 @@ app.get('/customers', function(req, res, next) {
 });
 
 // put data with request
-app.post('/customers/update', function(req, res, next) {
-	util.log(req);
-	//a4_db.putCustomers( req.body, function(err){
-		//if (err) {
-			//util.log('ERROR ' + err);
-			//throw err;
-		//}
-		//else
-		//{
-			//util.log("body " + req.body);
-			//res.writeHead(200, {'Content-Type': 'text/plain' });	
-			//res.end(req.body);
-		//};
-	//});
+app.post('/customers/update/:data', function(req, res) {
+	console.log(req.body);
 });
 
 
