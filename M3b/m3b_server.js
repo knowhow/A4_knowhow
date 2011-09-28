@@ -11,7 +11,7 @@
 
 var express = require('express');
 var nmDbEngine = 'sqlite3';
-var a4_db = require('./m3b_db_' + nmDbEngine);
+var m3b_db = require('./m3b_db_' + nmDbEngine);
 var util = require('util');
 
 
@@ -28,16 +28,16 @@ app.configure(function(){
 	}));
 });
 
-a4_db.connect( function(error) {
+m3b_db.connect( function(error) {
 	if (error) throw error;
 });
 
 app.on('close', function(errno) {
-	a4_db.disconnect( function(errno) {});
+	m3b_db.disconnect( function(errno) {});
 });
 
 app.get('/articles', function(req, res, next) {
-	a4_db.getArticles(function(err, art_data){
+	m3b_db.getArticles(function(err, art_data){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;
@@ -50,7 +50,7 @@ app.get('/articles', function(req, res, next) {
 });
 
 app.get('/article_description/:article_id', function(req, res, next) {
-	a4_db.getArticleDescById( req.params.article_id, function(err, image_desc){
+	m3b_db.getArticleDescById( req.params.article_id, function(err, image_desc){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;
@@ -63,7 +63,7 @@ app.get('/article_description/:article_id', function(req, res, next) {
 });
 
 app.get('/article_image/:article_id', function(req, res, next) {
-	a4_db.getArticleImageById( req.params.article_id, function(err, image_data){
+	m3b_db.getArticleImageById( req.params.article_id, function(err, image_data){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;
@@ -81,7 +81,7 @@ app.get('/article_image/:article_id', function(req, res, next) {
 // ## params
 
 app.get('/params/:device_id', function(req, res, next) {
-	a4_db.getParamByDeviceId( req.params.device_id, function(err, par_data){
+	m3b_db.getParamByDeviceId( req.params.device_id, function(err, par_data){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;
@@ -97,7 +97,7 @@ app.get('/params/:device_id', function(req, res, next) {
 // ## Customers
 
 app.get('/customers', function(req, res, next) {
-	a4_db.getCustomers(function(err, cust_data){
+	m3b_db.getCustomers(function(err, cust_data){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;
@@ -119,7 +119,7 @@ app.post('/customers/update', function(req, res) {
 // ## Users
 
 app.get('/users', function(req, res, next) {
-	a4_db.getUsers(function(err, u_data){
+	m3b_db.getUsers(function(err, u_data){
 		if (err) {
 			util.log('ERROR ' + err);
 			throw err;

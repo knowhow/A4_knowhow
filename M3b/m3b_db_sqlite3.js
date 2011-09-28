@@ -18,7 +18,7 @@ var db = undefined;
 
 // connect db
 exports.connect = function(callback){
-	db = new sqlite3.Database('a4-test-db.sqlite', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, function(err) {
+	db = new sqlite3.Database('m3b-test-db.sqlite', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, function(err) {
 		if(err){
 			utils.log('FAIL on creating database ' + err);
 			callback(err);
