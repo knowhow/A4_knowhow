@@ -8,7 +8,7 @@ Rad sa serverom
 
 ### Podešenje node.js
 
-* [.instalacija](http://redmine.bring.out.ba/issues/24469) -- pogledaj aktivnost instalacije node.js na MacOSX
+* [instalacija node.js](http://redmine.bring.out.ba/issues/24469) -- pogledaj aktivnost instalacije node.js na MacOSX
 
 ### Podešenje baze
 
@@ -43,8 +43,8 @@ Izlazimo sa komandom '.exit'
 
 Od dostupnih metoda na raspolaganju su nam:
 
-* '/articles' : dobijamo JSON listu artikala
-* '/article_images/:article_id' : dobijamo sliku artikla po zadatom article_id
+* /articles : dobijamo JSON listu artikala
+* /article_images/:article_id : dobijamo sliku artikla po zadatom article_id
 * ...
 
 ### Pokretanje i testiranje servera
