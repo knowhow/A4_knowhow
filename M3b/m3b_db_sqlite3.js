@@ -1,4 +1,4 @@
-/* 
+/*
  * This file is part of the knowhow ERP, a free and open source 
  * Enterprise Resource Planning software suite,
  * Copyright (c) 2010-2011 by bring.out doo Sarajevo.
@@ -119,9 +119,21 @@ exports.getCustomers = function(callback) {
 };
 
 // put customers
-exports.putCustomers = function(c_data, callback) {
+exports.postCustomers = function(c_data, callback) {
+	
 	for (var i=0; i < c_data.length; i++) {
-		db.run("UPDATE customers SET desc = ?, city = ?, postcode = ?, addr = ?, lon = ?, lat = ? WHERE id = ?", [ c_data[i].desc, c_data[i].city, c_data[i].postcode, c_data[i].addr, c_data[i].lon, c_data[i].lat ], function(err){
+		db.run("INSERT OR REPLACE INTO customers (id, desc, city, postcode, addr, tel1, tel2, user_id, lon, lat) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+		[ Number(c_data[i].id), 
+		c_data[i].desc, 
+		c_data[i].city, 
+		c_data[i].postcode, 
+		c_data[i].addr, 
+		c_data[i].tel1, 
+		c_data[i].tel2, 
+		Number(c_data[i].user_id), 
+		Number(c_data[i].lon), 
+		Number(c_data[i].lat) ], 
+		function(err){
 			if (err) {
 	  			util.log("FAILED on updating table " + err);
 	  			callback(err);
@@ -135,6 +147,75 @@ exports.putCustomers = function(c_data, callback) {
 	};
 };
 
+
+// ## Purchases
+
+// get purchases
+exports.getDocs = function(callback) {
+	util.log(' get all purchases...');
+	db.all('SELECT * FROM docs ORDER BY doc_no', callback);
+};
+
+// put purchase docs
+exports.postDocs = function(p_data, callback) {
+	
+	db.run("INSERT OR REPLACE INTO docs (doc_no, doc_date, cust_id, doc_valid, items_total, doc_notes, user_id) VALUES(?, ?, ?, ?, ?, ?, ?)", 
+		[ Number(p_data.doc_no), 
+		p_data.doc_date, 
+		p_data.cust_id,
+		p_data.doc_valid,
+		p_data.items_total,
+		p_data.doc_notes,
+		p_data.user_id ], 
+		function(err){
+			if (err) {
+	  			util.log("FAILED on updating table docs" + err);
+	  			callback(err);
+	  		}
+			else
+			{
+				callback(null);
+			};
+	  	});
+};
+
+
+// put purchase items
+exports.postDocItems = function(p_items, callback) {
+	
+	db.run("INSERT OR REPLACE INTO doc_items (doc_no, doc_item_no, article_id, article_quantity) VALUES(?, ?, ?, ?)", 
+		[ Number(p_items.doc_no), 
+		p_items.doc_item_no, 
+		p_items.article_id,
+		p_items.article_quantity ], 
+		function(err){
+			if (err) {
+	  			util.log("FAILED on updating table doc_items" + err);
+	  			callback(err);
+	  		}
+			else
+			{
+				callback(null);
+			};
+	  	});
+};
+
+// delete purchase items data
+exports.deleteDocItems = function(doc_no, callback) {
+	
+	db.run("DELETE FROM doc_items WHERE doc_no = ?", 
+		[ Number(doc_no) ], 
+		function(err){
+			if (err) {
+	  			util.log("FAILED on deleting table doc_items" + err);
+	  			callback(err);
+	  		}
+			else
+			{
+				callback(null);
+			};
+	  	});
+};
 
 
 // ## Users

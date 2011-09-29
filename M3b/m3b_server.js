@@ -113,7 +113,81 @@ app.get('/customers', function(req, res, next) {
 app.post('/customers/update', function(req, res) {
 	res.send(req.body);
 	console.log(req.body);
+	m3b_db.postCustomers(req.body, function(err, row){
+		if (err) {
+			util.log('ERROR ' + err);
+			throw err;
+		}
+		else
+		{
+			util.log('UPDATE customers OK');
+		};
+	});
 });
+
+
+// ## Purchases
+
+app.get('/purchases', function(req, res, next) {
+	m3b_db.getPurchases(function(err, p_data){
+		if (err) {
+			util.log('ERROR ' + err);
+			throw err;
+		}
+		else
+		{
+			res.send( p_data );
+		};
+	});
+});
+
+
+// put data with request
+app.post('/purchases/update', function(req, res) {
+	
+	res.send(req.body);
+	
+	var p_data;
+	var p_items;
+
+	for (var i=0; i < req.body.length; i++) {	
+		
+		p_data = req.body[i];
+
+		m3b_db.postDocs(p_data, function(err, row){
+			if (err) {
+				util.log('ERROR ' + err);
+				throw err;
+			}
+			else
+			{
+				util.log('UPDATE docs OK');
+			};
+		});
+		
+		m3b_db.deleteDocItems(p_data.doc_no, function(err){
+			if (err) {
+				util.log('ERROR ' + err);
+				throw err;
+			};			
+		});
+
+		for (var t=0; t < p_data.items.length; t++) {
+			p_items = p_data.items[t];
+			m3b_db.postDocItems(p_items, function(err, row){
+				if (err) {
+					util.log('ERROR ' + err);
+					throw err;
+				}
+				else
+				{
+					util.log('UPDATE doc_items ' + p_items.doc_item_no);
+				};
+			});
+		};	
+	};
+});
+
 
 
 // ## Users

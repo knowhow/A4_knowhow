@@ -31,9 +31,15 @@ INSERT INTO "users" (name, pwd)  VALUES('semir', '44');
 
 DROP TABLE IF EXISTS "params";
 CREATE TABLE "params" (id INTEGER PRIMARY KEY, device_id TEXT, param_name TEXT, param_value TEXT);
-INSERT INTO "params" (device_id, param_name, param_value) VALUES('1', 'par_default_radius', '30');
-INSERT INTO "params" (device_id, param_name, param_value) VALUES('1', 'par_use_gps', '1');
+INSERT INTO "params" (device_id, param_name, param_value) VALUES('15b3b013cef0d19', 'par_default_radius', '30');
+INSERT INTO "params" (device_id, param_name, param_value) VALUES('15b3b013cef0d19', 'par_use_gps', '1');
 INSERT INTO "params" (device_id, param_name, param_value) VALUES('2', 'par_default_radius', '30');
 INSERT INTO "params" (device_id, param_name, param_value) VALUES('2', 'par_use_gps', '1');
+
+DROP TABLE IF EXISTS "docs";
+CREATE TABLE "docs" (doc_no INTEGER PRIMARY KEY, doc_date DATE, cust_id INT, doc_valid INT, items_total REAL, user_id INT, doc_notes TEXT);
+
+DROP TABLE IF EXISTS "doc_items";
+CREATE TABLE "doc_items" (doc_no INT, doc_item_no INT, article_id TEXT, article_quantity REAL);
 
 
