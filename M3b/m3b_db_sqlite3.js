@@ -9,6 +9,9 @@
  * By using this software, you agree to be bound by its terms.
  */
 
+// ## Database module
+
+
 var util = require('util');
 var sqlite3 = require('sqlite3');
 
@@ -16,7 +19,7 @@ sqlite3.verbose();
 
 var db = undefined;
 
-// connect db
+// Connect to database
 exports.connect = function(callback){
 	db = new sqlite3.Database('m3b-test-db.sqlite', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, function(err) {
 		if(err){
@@ -30,14 +33,16 @@ exports.connect = function(callback){
 	});
 };
 
-// disconnect db
+// Disconnect from database
 exports.disconnect = function(callback) {
 	callback(null);
 };
 
-// ## Articles
+// ## Exports
 
-// get articles
+// ### Articles:
+
+// Get all articles
 exports.getArticles = function(callback) {
 	util.log(' get all articles...');
 	db.all('SELECT id, desc, price, image_name FROM articles', callback);
@@ -101,7 +106,7 @@ exports.getArticleImageById = function(_id, callback) {
 	});
 };
 
-// ## get params
+// ### Params
 
 // get params row by id
 exports.getParamByDeviceId = function( _d_id, callback ) {
@@ -110,15 +115,15 @@ exports.getParamByDeviceId = function( _d_id, callback ) {
 };
 
 
-// ## Customers
+// ### Customers
 
-// get customers
+// Get all customers
 exports.getCustomers = function(callback) {
 	util.log(' get all customers...');
 	db.all('SELECT * FROM customers ORDER BY id', callback);
 };
 
-// put customers
+// Post customers
 exports.postCustomers = function(c_data, callback) {
 	
 	for (var i=0; i < c_data.length; i++) {
@@ -148,15 +153,15 @@ exports.postCustomers = function(c_data, callback) {
 };
 
 
-// ## Purchases
+// ### Purchases
 
-// get purchases
+// Get purchases
 exports.getDocs = function(callback) {
 	util.log(' get all purchases...');
 	db.all('SELECT * FROM docs ORDER BY doc_no', callback);
 };
 
-// put purchase docs
+// Post purchase documents
 exports.postDocs = function(p_data, callback) {
 	
 	db.run("INSERT OR REPLACE INTO docs (doc_no, doc_date, cust_id, doc_valid, items_total, doc_notes, user_id) VALUES(?, ?, ?, ?, ?, ?, ?)", 
@@ -180,7 +185,7 @@ exports.postDocs = function(p_data, callback) {
 };
 
 
-// put purchase items
+// Post purchase items data
 exports.postDocItems = function(p_items, callback) {
 	
 	db.run("INSERT OR REPLACE INTO doc_items (doc_no, doc_item_no, article_id, article_quantity) VALUES(?, ?, ?, ?)", 
@@ -200,7 +205,7 @@ exports.postDocItems = function(p_items, callback) {
 	  	});
 };
 
-// delete purchase items data
+// Delete purchase items data
 exports.deleteDocItems = function(doc_no, callback) {
 	
 	db.run("DELETE FROM doc_items WHERE doc_no = ?", 
@@ -218,9 +223,9 @@ exports.deleteDocItems = function(doc_no, callback) {
 };
 
 
-// ## Users
+// ### Users
 
-// get users
+// Get all users
 exports.getUsers = function(callback) {
 	util.log(' get all users...');
 	db.all('SELECT * FROM users ORDER BY id', callback);
