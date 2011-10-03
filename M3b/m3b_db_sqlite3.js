@@ -111,7 +111,7 @@ exports.getArticleImageById = function(_id, callback) {
 // get params row by id
 exports.getParamByDeviceId = function( _d_id, callback ) {
 	util.log(' get all params...');
-	db.all('SELECT * FROM params WHERE device_id = ? ORDER BY id', [_d_id], callback);
+	db.all('SELECT * FROM params WHERE device_id = ? AND device_id = "*" ORDER BY id', [_d_id], callback);
 };
 
 
