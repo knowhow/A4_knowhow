@@ -1,4 +1,4 @@
-<!DOCTYPE html>  <html> <head>   <title>m3b_server.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="m3b_db_sqlite3.html">                 m3b_db_sqlite3.js               </a>                                           <a class="source" href="m3b_server.html">                 m3b_server.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               m3b_server.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="cm">/* </span>
+<!DOCTYPE html>  <html> <head>   <title>m3b_server.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="LICENSE_CPAL_bring.out_knowhow.html">                 LICENSE_CPAL_bring.out_knowhow.md               </a>                                           <a class="source" href="README.html">                 README.md               </a>                                           <a class="source" href="m3b_db_sqlite3.html">                 m3b_db_sqlite3.js               </a>                                           <a class="source" href="m3b_server.html">                 m3b_server.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               m3b_server.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="cm">/* </span>
 <span class="cm"> * This file is part of the knowhow ERP, a free and open source </span>
 <span class="cm"> * Enterprise Resource Planning software suite,</span>
 <span class="cm"> * Copyright (c) 2010-2011 by bring.out doo Sarajevo.</span>
@@ -16,153 +16,153 @@ This server export's many of methods for database manipulating.</p>             
 <span class="kd">var</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>Create express server</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>to do: express.logger();</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>Configure a server
 It's important to use bodyParser() for POST methods and JSON object recognize.
 bodyParser() must be first in configuration list so it's first invoked.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-	<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">());</span>
-	<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">router</span><span class="p">);</span>
-	<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span><span class="p">({</span>
-		<span class="nx">dumpExceptions</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">showStack</span><span class="o">:</span> <span class="kc">true</span>
-	<span class="p">}));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">router</span><span class="p">);</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">errorHandler</span><span class="p">({</span>
+    <span class="nx">dumpExceptions</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">showStack</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}));</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>Connect to database</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">m3b_db</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>On server close, close the databse connection too.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">errno</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">errno</span><span class="p">)</span> <span class="p">{});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">errno</span><span class="p">)</span> <span class="p">{});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <h2>Exports:</h2>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <p>List of all articles
 Simply we can test connection by running this in console:
         curl http://localhost:8080/articles
 If it's ok, we must get the JSON object with article data</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/articles&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticles</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">art_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">art_data</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticles</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">art_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">art_data</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-10">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-10">&#182;</a>               </div>               <p>Get the article description by giving 'article_id'</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/article_description/:article_id&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticleDescById</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">article_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image_desc</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">image_desc</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticleDescById</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">article_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image_desc</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">image_desc</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-11">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-11">&#182;</a>               </div>               <p>Get article image by giving 'article_id'
 We must get image represented in browser</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/article_image/:article_id&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticleImageById</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">article_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;image/jpeg&#39;</span> <span class="p">});</span>	
-			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">image_data</span><span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getArticleImageById</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">article_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">image_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;image/jpeg&#39;</span> <span class="p">});</span>  
+      <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">image_data</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-12">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-12">&#182;</a>               </div>               <p>Get all params for device by giving device_id</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/params/:device_id&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getParamByDeviceId</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">device_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">par_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">par_data</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getParamByDeviceId</span><span class="p">(</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">device_id</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">par_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">par_data</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-13">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-13">&#182;</a>               </div>               <p>Get list of all customers </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/customers&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getCustomers</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cust_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">cust_data</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getCustomers</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">cust_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">cust_data</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-14">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-14">&#182;</a>               </div>               <p>Post customers data into test database </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/customers/update&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postCustomers</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE customers OK&#39;</span><span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postCustomers</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE customers OK&#39;</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-15">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-15">&#182;</a>               </div>               <p>Get all purchases data </p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/purchases&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getPurchases</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">p_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">p_data</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getPurchases</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">p_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">p_data</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-16">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-16">&#182;</a>               </div>               <p>Post purchases data into test sqlite database</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/purchases/update&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-	
-	<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-	
-	<span class="kd">var</span> <span class="nx">p_data</span><span class="p">;</span>
-	<span class="kd">var</span> <span class="nx">p_items</span><span class="p">;</span>
+  
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+  
+  <span class="kd">var</span> <span class="nx">p_data</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">p_items</span><span class="p">;</span>
 
-	<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>	
-		
-		<span class="nx">p_data</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
+    
+    <span class="nx">p_data</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
 
-		<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postDocs</span><span class="p">(</span><span class="nx">p_data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
-			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-				<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-				<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-			<span class="p">}</span>
-			<span class="k">else</span>
-			<span class="p">{</span>
-				<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE docs OK&#39;</span><span class="p">);</span>
-			<span class="p">};</span>
-		<span class="p">});</span>
-		
-		<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">deleteDocItems</span><span class="p">(</span><span class="nx">p_data</span><span class="p">.</span><span class="nx">doc_no</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
-			<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-				<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-				<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-			<span class="p">};</span>			
-		<span class="p">});</span>
+    <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postDocs</span><span class="p">(</span><span class="nx">p_data</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span>
+      <span class="p">{</span>
+        <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE docs OK&#39;</span><span class="p">);</span>
+      <span class="p">};</span>
+    <span class="p">});</span>
+    
+    <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">deleteDocItems</span><span class="p">(</span><span class="nx">p_data</span><span class="p">.</span><span class="nx">doc_no</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+      <span class="p">};</span>      
+    <span class="p">});</span>
 
-		<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">t</span> <span class="o">&lt;</span> <span class="nx">p_data</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">p_items</span> <span class="o">=</span> <span class="nx">p_data</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="nx">t</span><span class="p">];</span>
-			<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postDocItems</span><span class="p">(</span><span class="nx">p_items</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
-				<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-					<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-					<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-				<span class="p">}</span>
-				<span class="k">else</span>
-				<span class="p">{</span>
-					<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE doc_items &#39;</span> <span class="o">+</span> <span class="nx">p_items</span><span class="p">.</span><span class="nx">doc_item_no</span><span class="p">);</span>
-				<span class="p">};</span>
-			<span class="p">});</span>
-		<span class="p">};</span>	
-	<span class="p">};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">t</span> <span class="o">&lt;</span> <span class="nx">p_data</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">t</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">p_items</span> <span class="o">=</span> <span class="nx">p_data</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="nx">t</span><span class="p">];</span>
+      <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">postDocItems</span><span class="p">(</span><span class="nx">p_items</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+          <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+          <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UPDATE doc_items &#39;</span> <span class="o">+</span> <span class="nx">p_items</span><span class="p">.</span><span class="nx">doc_item_no</span><span class="p">);</span>
+        <span class="p">};</span>
+      <span class="p">});</span>
+    <span class="p">};</span>  
+  <span class="p">};</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-17">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-17">&#182;</a>               </div>               <p>Get list of all users</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getUsers</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">u_data</span><span class="p">){</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
-			<span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-		<span class="p">}</span>
-		<span class="k">else</span>
-		<span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">u_data</span> <span class="p">);</span>
-		<span class="p">};</span>
-	<span class="p">});</span>
+  <span class="nx">m3b_db</span><span class="p">.</span><span class="nx">getUsers</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">u_data</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">util</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR &#39;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">u_data</span> <span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
 <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-18">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-18">&#182;</a>               </div>               <p>server listen at port 8080</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
 
 </pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
